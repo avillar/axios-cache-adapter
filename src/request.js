@@ -16,7 +16,7 @@ async function request (config, req) {
 
   const method = req.method.toLowerCase()
 
-  if (method === 'head' || method !== 'get') {
+  if (method === 'head' || method === 'options' || (!config.cacheAllMethods && method !== 'get')) {
     return excludeFromCache()
   }
 
